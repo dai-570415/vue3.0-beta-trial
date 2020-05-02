@@ -1,18 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Index msg="Vue 3.0 Beta" />
+    <Counter />
+    <Parent />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, onMounted, onUpdated, onUnmounted } from 'vue';
+import Index from './components/Index.vue';
+import Counter from './components/Counter.vue';
+import Parent from './components/Parent.vue';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    Index,
+    Counter,
+    Parent,
+  },
+  setup() {
+    // ライフサイクルメソッド
+    onMounted(() => {
+      console.log('描画しました');
+    });
+    onUpdated(() => {
+      console.log('更新しました');
+    });
   }
 });
 </script>
